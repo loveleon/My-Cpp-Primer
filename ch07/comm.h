@@ -1,0 +1,11 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using std::vector;
+using std::cout;
+using std::endl;
+using std::cin;
+using std::string;
+using std::cerr;
+using std::istream;
+using std::ostream;
