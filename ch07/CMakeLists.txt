@@ -10,5 +10,6 @@ include_directories(comm)
 #add_executable(ex7_28 ex7_28.cpp)
 #add_executable(ex7_37 ex7_37.cpp)
 #add_executable(ex7_37 ex7_37.cpp)
-add_executable(ex7_43 ex7_43.cpp)
+#add_executable(ex7_43 ex7_43.cpp)
+add_executable(ex7_52 ex7_52.cpp)
 
