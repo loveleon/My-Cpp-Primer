@@ -1,0 +1,5 @@
+xx-yyy-zzz 1 1.11
+xy-yyy-zzz 1 1.1
+xy-yyy-zzz 1 1.1
+xz-yyy-zzz 1 1.1
+zz-yyy-zzz 1 1.1

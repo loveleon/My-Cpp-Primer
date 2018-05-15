@@ -10,7 +10,27 @@ ch06 function
 6.19 (a)形参与实参数量不匹配；(b)合法 (c)合法 (d)3.8自己转换为3
 6.20 引用类型不修改实参值，应定义为常量引用；如果形参应该是常量引用，传递普通引用则实参会被修改。
 6.24(☆)  形参实际为const int* 指定数组大小为10无意义。如果想指定数组大小，可以传递数组引用.
+6.28 循环内elem是string类型.
+6.29 
+6.31 返回局部变量的引用无效。重载运算符返回常量引用无效.
+6.34 val != 0 分2种情况；当传入整数时，val=0会停止递归。实际上 n*(n-1)...*2*1*1.当传入负数时，递归导致栈溢出。
+6.37 (1) using arrT = int [10];
+    arrT& func();
+    (2) func() -->int(&)[10];
 
+    (3) int a[10]; 
+    decltype(a)& func();
+
+6.38 返回数组引用 
+decltype(odd)& func(int i){
+    return (i%2 == 0)? odd :even;
+}
+6.40 形参默认值要从函数参数右边开始。
+6.41 (a)错，(b)对 (c)跟预期不同
+6.43 a定义放在头文件中，因为内联函数需要在编译期间展开，所以，需要多处定义，且唯一。所以，放在头文件中。b函数声明可以放在头文件中。
+6.44 inline bool isShorter(const string& str1,const string& str2){return s1.size() < s2.size();};
+6.47 cmake -DCMAKE_BUILD_TYPE=Debug  debug版本会使用-g 
+    cmake -DCMAKE_BUILD_TYPE=Release Release版本会使用-O3 -DNDEBUG
 
 
 
