@@ -8,6 +8,7 @@
 #include <fstream>
 #include <sstream>
 #include <list>
+#include <utility>
 
 using std::list;
 using std::istringstream;
@@ -23,4 +24,5 @@ using std::cin;
 using std::endl;
 using std::cerr;
 using std::multiset;
+using std::pair;
 #endif
