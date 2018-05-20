@@ -7,3 +7,12 @@
         元素有序；
         插入 删除元素时间对数;vector按O(length);
 11.12 make_pair 方式最直观。
+11.15 map<int,vector<int>> mapped_type 是pair<int,vector<int>>类型；key_type是int类型；value_type是pair<int,vector<int>>类型。
+11.16 map<typename T1,typename T2>::iterator it;it->second= value;
+11.17   1)合法。
+	2）不合法。(因为multiset不支持push_back)
+	3）合法  4）合法。
+11.18 map<const string,size_t>::const_iterator;
+11.19 using COMPARE_TYPE = bool (*)(const Sales_data &,const Sales_data &);
+multiset<string, COMPARE_TYPE> bookstore(compareIsbn);
+multiset<string,COMPARE_TYPE>::iterator c_it = bookstore.begin();
