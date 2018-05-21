@@ -21,3 +21,6 @@ multiset<string,COMPARE_TYPE>::iterator c_it = bookstore.begin();
     ->second 获取新插入关键字的值，
     ++ 将新插入关键字对应值加1.
 11.22 map<string,vector<int>> insert版本：Insert(pair<string,vector<int>>) 返回值：pair<map<string,vector<int>>::iterator,bool>
+11.24 定义一个空的map<int,int>,定义一个关键字是0的,值是默认值初始化的元素.
+11.25 定义一个空vector<int>,定义vector变量,并初始化为1.
+11.26 map下标使用关键字类型;返回类型是mapp_type类型即关联关键字的类型.
