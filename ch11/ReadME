@@ -16,3 +16,8 @@
 11.19 using COMPARE_TYPE = bool (*)(const Sales_data &,const Sales_data &);
 multiset<string, COMPARE_TYPE> bookstore(compareIsbn);
 multiset<string,COMPARE_TYPE>::iterator c_it = bookstore.begin();
+11.21 word_count.insert({word,0})插入一个map元素，
+    .first 获取返回的pair值的关键字(是一个迭代器类型,指向新插入元素)
+    ->second 获取新插入关键字的值，
+    ++ 将新插入关键字对应值加1.
+11.22 map<string,vector<int>> insert版本：Insert(pair<string,vector<int>>) 返回值：pair<map<string,vector<int>>::iterator,bool>

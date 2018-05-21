@@ -25,4 +25,5 @@ using std::endl;
 using std::cerr;
 using std::multiset;
 using std::pair;
+using std::multimap;
 #endif
