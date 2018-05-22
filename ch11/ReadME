@@ -22,5 +22,10 @@ multiset<string,COMPARE_TYPE>::iterator c_it = bookstore.begin();
     ++ 将新插入关键字对应值加1.
 11.22 map<string,vector<int>> insert版本：Insert(pair<string,vector<int>>) 返回值：pair<map<string,vector<int>>::iterator,bool>
 11.24 定义一个空的map<int,int>,定义一个关键字是0的,值是默认值初始化的元素.
-11.25 定义一个空vector<int>,定义vector变量,并初始化为1.
+11.25 定义一个空vector<int>,v[0] = 1 使用一个未定义元素位置。
 11.26 map下标使用关键字类型;返回类型是mapp_type类型即关联关键字的类型.
+11.27 对于map set，count返回0或是1，可以用作判断元素是否存在。find是找出元素第一次出现的位置。
+11.28 map<string,vector<int>> find返回变量类型:map<string,vector<int>>::iterator
+11.29 如果给定关键字不在容器中，lower_bound会返回第一大于查询关键字的元素位置或是返回尾后迭代器。
+若关键字大于容器中其他值，则upper_bound返回尾后迭代器，否则lower_bound和upper_bound返回最佳插入位置。
+11.30 pos.first->second 输出与关键字相同的区间，下边界迭代器所指对象。
