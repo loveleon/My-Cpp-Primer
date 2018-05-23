@@ -9,6 +9,7 @@
 #include <sstream>
 #include <list>
 #include <utility>
+#include <stdexcept>
 
 using std::list;
 using std::istringstream;
