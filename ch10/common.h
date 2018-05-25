@@ -3,6 +3,7 @@
 #include <list>
 #include <string>
 #include <algorithm>
+#include <numeric>
 
 using std::string;
 using std::list;

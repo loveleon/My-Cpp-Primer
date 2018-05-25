@@ -11,8 +11,8 @@ using namespace std;
 //因此指针指向的相同内容的文字共享相同的内存，但是数组中的文字单独存储。
 
 int main() {
-	char *a[3] = {"123", "456", "789"};
-	char *b[4] = {"123", "456", "789", "89"};
+	const char *a[3] = {"123", "456", "789"};
+	const char *b[4] = {"123", "456", "789", "89"};
 	cout << std::boolalpha << std::equal(begin(a), end(a), begin(b)) << endl;
 
 	char c[3][2] = {"a", "b", "c"};
