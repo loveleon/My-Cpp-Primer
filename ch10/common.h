@@ -4,6 +4,7 @@
 #include <string>
 #include <algorithm>
 #include <numeric>
+#include <iterator>
 
 using std::string;
 using std::list;
