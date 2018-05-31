@@ -16,9 +16,11 @@ int main(){
     std::ostream_iterator<Sales_item> out(cout," ");
     vector<Sales_item> vec;
     std::copy(in,ineof,std::back_inserter(vec));
+    std::copy(vec.cbegin(),vec.cend(),out);
+    cout  << endl;
     std::sort(vec.begin(),vec.end(),compareIsbn);
     for(auto it = vec.cbegin(),pos = it;it != vec.cend();it = pos){
-         pos = std::find_if(vec.cbegin(),vec.cend(),[it](const Sales_item & item){return item.isbn() != (*it).isbn();});
+         pos = std::find_if(it,vec.cend(),[it](const Sales_item & item){return item.isbn() != (*it).isbn();});
         auto sum = std::accumulate(it,pos,Sales_item(it->isbn()));
         cout << (*it).isbn() << " and sum :" << sum << endl;
 //        it = pos;
