@@ -4,3 +4,12 @@
 12.3 push_back不需要添加const。若定义const StrBlob时候，调用push_back会报编译错误。因为，将const类型的this指针转换StrBlob &(普通this)存在风险。编译器会拒绝。
 12.4 check不检查sz是否大于0,因为size_type 是unsigned类型.若传递负数，会自动转换为大于0的整数，所以，size_type会保证是整数或0。
 12.5 未定义initializer_list explicit版本构造函数，优点：可以将初始化器形参传递给构造函数，构造方便。缺点：如果vector存放整数,implicit转化会歧义,报错.
+12.8 返回类型不匹配；返回局部变量，内存没法泄露；
+12.9 r指向内存没法释放；
+12.10 将shared_ptr类型p指针，赋值给形参，process处理完成后，引用不为0，资源不会释放。
+12.11 process(shared_ptr<int>(p.get())) p.get()赋值给形参shared_ptr，在函数调用结束后，shared_ptr会释放p.get(),则函数外使用悬挂指针情况;
+12.12 (a) 合法，将sp的引用计数加1；
+	(b) 不合法。shared_ptr是explicit，不支持new返回指针自动转换;
+	(c) 不合法，同(b)；
+	(d) 合法。process调用完成p自动释放；但是，会有二次释放内存危险。
+12.13 显示释放p.get()值，会导致shared_ptr再次释放；
