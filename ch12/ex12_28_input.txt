@@ -1,0 +1,10 @@
+this is a text file.
+it can acculate the words which has many times.
+each line has many words.cout cin std include .
+cin cout std include fstream iostream file.
+test hello world .and the name and age.
+etc.time day when where is that.cout cin std include.
+cin
+cin
+cout cout
+cin cin

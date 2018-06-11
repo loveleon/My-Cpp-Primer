@@ -11,6 +11,8 @@
 #include <utility>
 #include <algorithm>
 
+#include "ex12_22.h"
+
 using std::istream;
 using std::map;
 using std::set;
@@ -26,7 +28,8 @@ using std::istringstream;
 using std::pair;
 
 class QueryResult;
-ostream & print(ostream &out,const QueryResult &result);
+ostream & print(ostream &out,QueryResult &result);
+//ostream & print(ostream &out,const QueryResult &result);
 
 class TextQuery{
     friend class QueryResult;
@@ -36,43 +39,42 @@ class TextQuery{
         TextQuery(istream &infile);
         QueryResult query(const string &word);
     private:
-        map<string,shared_ptr<set<VSIZE_TYPE>>> result;
-        shared_ptr<vector<string>> input;
+        map<string,shared_ptr<set<StrBlob::size_type>>> result;
+        StrBlob file;
 };
 
 class QueryResult{
     friend ostream & print(ostream &out,const QueryResult &result);
+    friend ostream & print(ostream &out,QueryResult &result);
     public:
-        QueryResult(const string word_,shared_ptr<set<TextQuery::VSIZE_TYPE>> sset_,shared_ptr<vector<string>> input_);
+        QueryResult(const string word_,shared_ptr<set<StrBlob::size_type>> sset_,StrBlob &input_);
     private:
-        shared_ptr<set<TextQuery::VSIZE_TYPE>> rst;
+        shared_ptr<set<StrBlob::size_type>> nos;
         string word;
-        shared_ptr<vector<string>> input;
+        StrBlob file;
 };
 
-QueryResult::QueryResult(const string word_,shared_ptr<set<TextQuery::VSIZE_TYPE>> sset_, shared_ptr<vector<string>> input_){
-    rst = sset_;
+QueryResult::QueryResult(const string word_,shared_ptr<set<StrBlob::size_type>> sset_,StrBlob &input_){
+    nos = sset_;
     word = word_;
-    input = input_;
+    file = input_;
 }
 
-ostream &print(ostream &out, const QueryResult &rst){
-    auto member = rst.rst;
-    auto times = member->size();
-    out << rst.word << " ocur "<< times << (times > 1 ?" times":" time") << endl;
-    for(auto sit=member->cbegin();sit != member->cend();sit++){
-        auto vec = rst.input;
-        out << "    (line " << *sit << " )";
-        out << vec->at(*sit) << endl;
+ostream &print(ostream &out, QueryResult &rst){
+    out << rst.word << " ocur "<< rst.nos->size() << ( rst.nos->size() > 1 ?" times":" time") << endl;
+    for(auto pos : *rst.nos){
+        StrBlobPtr sbp(rst.file,pos);
+        out << "    (line " << pos << " )";
+        out << sbp.deref() << endl;
     }
     return out;
 }
 
-TextQuery::TextQuery(istream &infile):input(std::make_shared<vector<string>>()){
+TextQuery::TextQuery(istream &infile):file(StrBlob()){
     VSIZE_TYPE i=0;
     if(infile){
         for(string line;getline(infile,line);++i){
-            input->push_back(line);
+            file.push_back(line);
 
             istringstream is(line);
             for(string text,word;is >> text;word.clear()){
@@ -95,12 +97,12 @@ TextQuery::TextQuery(istream &infile):input(std::make_shared<vector<string>>()){
 }
 
 QueryResult TextQuery::query(const string &word){
-    static shared_ptr<set<VSIZE_TYPE>> nodata = std::make_shared<set<VSIZE_TYPE>>();
+    static shared_ptr<set<VSIZE_TYPE>> nodata = std::make_shared<set<StrBlob::size_type>>();
    auto found =  result.find(word);
    if(found == result.end()){
-        return  QueryResult(word,nodata,input);
+        return  QueryResult(word,nodata,file);
    }else{
-       return QueryResult(word,found->second,input);
+       return QueryResult(word,found->second,file);
    }
 }
 #endif

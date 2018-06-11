@@ -7,6 +7,7 @@
 #include <map>
 #include <fstream>
 #include <functional>
+#include "ex12_32.h"
 
 using std::vector;using std::map;using std::istringstream;using std::ifstream;using std::cout;using std::cin;using std::endl;
 using std::string;using std::set;

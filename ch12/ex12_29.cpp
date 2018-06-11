@@ -33,7 +33,9 @@ int main(){
     }
 
     cout << "lookup" << endl;
-    for(string msg;cin >> msg;cout << "going on lookup..."){
+    string msg;
+    cin >> msg;
+    do{
         if(msg == string("q") || msg == string("Q")){
             break;
         }
@@ -49,6 +51,6 @@ int main(){
         }else{
             cout << "can't find " << msg << endl;
         }
-    }
+    }while(cin >> msg);
     return 0;
 }
