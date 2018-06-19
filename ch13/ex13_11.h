@@ -18,7 +18,9 @@ HasPtr::~HasPtr(){
 }
 
 HasPtr::HasPtr(const HasPtr &has){
-    ps = new std::string(*has.ps);
+    auto new_ps = new std::string(*has.ps);
+    delete ps;
+    ps = new_ps;
     i = has.i;
 }
 
