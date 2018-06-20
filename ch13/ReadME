@@ -15,3 +15,4 @@
 13.20 TextQuery生成QueryResult对象，当拷贝TextQuery 和 QueryResult时候，shared_ptr资源计数会加1.销毁对象，引用计数减1，当为0，释放对象资源。
 13.21 TextQuery QueryResult是共享资源类型，使用同一份资源，拷贝shared_ptr成员，只是增加引用计数，并未拷贝一份资源。所以，不需要自定义拷贝构造和赋值。
 13.24 未定义析构函数，销毁指针时候，不会释放动态内存资源，造成内存泄漏。未定义拷贝构造函数，类会生成默认拷贝构造函数，直接拷贝指针地址，可能造成二次内存释放。
+13.29 swap(HasPtr,HasPtr)函数调用std::swap版本。
