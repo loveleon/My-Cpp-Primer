@@ -90,3 +90,10 @@ void swap(Folder &lf,Folder &rt){
     rt.add_to_Message(rt);
 }
 
+int main(){
+    Message m("test");
+    Message m2("test2");
+    m = m2;
+    m.print();
+    return 0;
+}
