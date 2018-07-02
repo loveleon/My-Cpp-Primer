@@ -1,10 +1,10 @@
 #pragma once
 #include <string>
 #include <memory>
+#include <iostream>
 
 class StrVec{
     public:
-
         void reserve(std::size_t newcap);
         void resize(std::size_t newsize);
         void resize(std::size_t newsize, const std::string &s);

@@ -1,4 +1,6 @@
 #include "ex13_39.h"
+
+std::allocator<std::string> StrVec::alloc;
 StrVec::StrVec(const StrVec &v){
    auto data = alloc_n_copy(v.begin(),v.end());
    element = data.first;
@@ -68,4 +70,27 @@ void StrVec::reserve(std::size_t newcap){
 }
 
 void StrVec::resize(std::size_t newsize) {
+    resize(newsize,std::string());
+}
+
+void StrVec::resize(std::size_t newsize, const std::string &s){
+    if(newsize > size()){
+        if(newsize > capacity()){
+            reserve(newsize*2);
+            for(auto i = size(); i != newsize; ++i){
+                alloc.construct(first_free++,s);
+            }
+        }
+    }else if(newsize < size()){
+        for(auto it = first_free; it != element+newsize;)
+            alloc.destroy(--it);
+    }
+}
+
+int main(){
+    StrVec sv;
+    std::cout << sv.size() << std::endl;
+    sv.push_back("abc");
+    std::cout << sv.size() << std::endl;
+    return 0;
 }
