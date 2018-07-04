@@ -1,4 +1,5 @@
 #include "ex13_40.h"
+#include <algorithm>
 
 std::allocator<std::string> StrVec::alloc;
 StrVec::StrVec(const StrVec &v){
@@ -58,8 +59,9 @@ void StrVec::alloc_n_move(std::size_t newcap){
 
 void StrVec::free(){
     if(element){
-        for(auto p = first_free; p != element; )
-            alloc.destroy(--p);
+//        for(auto p = first_free; p != element; )
+//            alloc.destroy(--p);
+        std::for_each(begin(),end(),[this](const std::string &rhs){alloc.destroy(&rhs);});//method 2 ex13_43
         alloc.deallocate(element,cap-element);
     }
 }
