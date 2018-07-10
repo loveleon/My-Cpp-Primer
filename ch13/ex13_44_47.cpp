@@ -33,6 +33,7 @@ void String::free(){
 }
 
 String::~String(){
+    std::cout << __func__ << std::endl;
     free();
 }
 
