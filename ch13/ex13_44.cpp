@@ -1,42 +1,8 @@
 #include "ex13_44.h"
-String::~String(){
-    free();
-}
-String::String():element(nullptr),end(nullptr){
 
-}
-
-String &String::operator=(const String &str){
-    auto data = alloc_n_copy(str.element,str.end);
-    free();
-    range_initialize(data.first,data.second);
-    element = data.first;
-    end = data.second;
-    return *this;
-}
-/*
-String::String(const char *str){
-    int len = strlen(str);
-    auto start = alloc.allocate(len);
-    for(int i = 0; i < len; ++i){
-        alloc.construct(start,str[i]);
-    }
-    element = const_cast<char *>(str);
-    end = element+len;
-}*/
-
-String::String(const char *str){
-    char * start = const_cast<char *>(str);
-    while(*start){
-        std::cout << *start << " ";
-        ++start;
-    }
-    std::cout << std::endl;
-    range_initialize(str,++start);
-}
-
-String::String(const String &str){
-    range_initialize(str.element,str.end);
+std::pair<char*,char*> String::alloc_n_copy(const char *beg, const char *end){
+    auto data = alloc.allocate(end-beg);
+    return {data,std::uninitialized_copy(beg,end,data)};
 }
 
 void String::range_initialize(const char *start, const char *end){
@@ -45,9 +11,16 @@ void String::range_initialize(const char *start, const char *end){
     end = data.second;
 }
 
-std::pair<char*,char*> String::alloc_n_copy(const char *beg, const char *end){
-    auto data = alloc.allocate(end-beg);
-    return {data,std::uninitialized_copy(beg,end,data)};
+String::String(const char *str){
+    char * start = const_cast<char *>(str);
+    while(*start){
+        ++start;
+    }
+    range_initialize(str,++start);
+}
+
+String::String(const String &str){
+    range_initialize(str.element,str.end);
 }
 
 void String::free(){
@@ -58,8 +31,21 @@ void String::free(){
     }
 }
 
+String::~String(){
+    free();
+}
+
+String &String::operator=(const String &str){
+    std::cout << __func__ << std::endl;
+    auto data = alloc_n_copy(str.element,str.end);
+    free();
+    element = data.first;
+    end = data.second;
+    return *this;
+}
+
 std::ostream & print(std::ostream &out, const String &str){
-//    std::for_each(str.element,str.end,[&out](const char &ch){out << ch << " ";});
-    out << str.element ;
+    std::for_each(str.element,str.end,[&out](const char &ch){out << ch << " ";});
+//    out << str.element ;
     return out;
 }
