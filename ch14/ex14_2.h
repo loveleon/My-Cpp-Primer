@@ -10,7 +10,10 @@ class Sales_data{
         friend std::ostream& operator<<(std::ostream &out,const Sales_data &sd);
         friend Sales_data operator+(const Sales_data &lft,const Sales_data &rhs);
     public:
-        Sales_data(const std::string &s,unsigned int n, double p):bookNo(s),units_sold(n),revenue(n*p){}
+        Sales_data(const std::string &s,unsigned int n, double p):bookNo(s),units_sold(n),revenue(n*p){
+            std::cout << "Sales_data:" << std::endl;
+            std::cout << bookNo << " " << units_sold << " " << revenue << std::endl;
+        }
         Sales_data():Sales_data("",0,0.0f){}
         //Sales_data(const std::string &s):bookNo(s),units_sold(0),revenue(0.0){}
         Sales_data(const std::string &s):Sales_data(s,0,0.0f){}

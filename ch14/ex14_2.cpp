@@ -18,11 +18,13 @@ std::ostream &operator<<(std::ostream &out, const Sales_data &sd){
 std::istream& operator>>(std::istream &is, Sales_data &sd){
     double price = 0.0;
     is >> sd.bookNo >> sd.units_sold >> price;
-    if(is){
-       sd.revenue = sd.units_sold * price;
-    }else{
-        sd = Sales_data();
-    }
+    std::cout << __func__ << " price:" << price << std::endl;
+    sd.revenue = sd.units_sold * price;
+   // if(is){
+   //    sd.revenue = sd.units_sold * price;
+   // }else{
+   //     sd = Sales_data();
+   // }
     return is;
 }
 //*/
