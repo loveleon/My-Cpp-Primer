@@ -25,6 +25,15 @@ class String{
         char *end(){return last_elem;}
         char& operator[](size_t i){return elements[i];}
         const char& operator[](size_t i)const{return elements[i];}
+
+        const char * c_str()const {return elements;}
+        size_t size()const { return last_elem - elements; }
+        size_t capacity()const { return cap - elements; }
+        size_t length()const { return size(); }
+
+        void reserve(size_t );
+        void resize(size_t );
+        void resize(size_t , char );
     private:
         std::pair<char *,char *> alloc_n_copy(const char *beg,const char *end);
         void range_initializer(const char *beg,const char *end);
@@ -40,3 +49,12 @@ class String{
         char * cap;
         std::allocator<char> alloc;
 };
+
+std::ostream &operator<<(std::ostream &out, const String &);
+std::istream &operator>>(std::istream &in , String &);
+bool operator==(const String& lhs, const String &rhs);
+bool operator!=(const String& lhs, const String &rhs);
+bool operator<(const String& lhs, const String &rhs);
+bool operator<=(const String &lhs,const String &rhs);
+bool operator>(const String &lhs, const String &rhs);
+bool operator>=(const String &lhs, const String &rhs);
