@@ -8,5 +8,6 @@ set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 #add_executable(ex14_2 ex14_2.cpp ex14_2_test.cpp)
 #add_executable(ex14_5 ex14_5.cpp ex14_5_test.cpp)
 #add_executable(ex14_7 ex14_7.cpp ex14_7_test.cpp)
-add_executable(ex14_22 ex14_22.cpp ex14_22_test.cpp)
+#add_executable(ex14_22 ex14_22.cpp ex14_22_test.cpp)
+add_executable(ex14_26 ex14_26_String.cpp ex14_26_StringTest.cpp)
 

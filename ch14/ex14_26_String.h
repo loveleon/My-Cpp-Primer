@@ -21,8 +21,8 @@ class String{
         ~String();
     public:
         void push_back(const char c);
-        char *begin(){return elements;}
-        char *end(){return last_elem;}
+        char *begin()const{return elements;}
+        char *end()const{return last_elem;}
         char& operator[](size_t i){return elements[i];}
         const char& operator[](size_t i)const{return elements[i];}
 
