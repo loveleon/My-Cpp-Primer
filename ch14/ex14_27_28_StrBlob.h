@@ -146,6 +146,153 @@ private:
 
     std::weak_ptr<vector<string>> wptr;
     size_t curr;
-
-
 };
+
+bool operator==(const StrBlobPtr &,const StrBlobPtr &);
+bool operator!=(const StrBlobPtr &,const StrBlobPtr &);
+bool operator<(const StrBlobPtr &,const StrBlobPtr &);
+bool operator<=(const StrBlobPtr &,const StrBlobPtr &);
+bool operator>(const StrBlobPtr &,const StrBlobPtr &);
+bool operator>=(const StrBlobPtr &,const StrBlobPtr &);
+
+inline string& StrBlobPtr::deref()const
+{
+    auto sp = check(curr,"out of range.");
+    return (*sp)[curr];
+}
+
+inline StrBlobPtr& StrBlobPtr::operator++()
+{
+    check(curr,"out of range.");
+    ++curr;
+    return *this;
+}
+
+inline StrBlobPtr& StrBlobPtr::operator--()
+{
+    check(--curr,"out of range.");
+    return *this;
+}
+
+inline StrBlobPtr StrBlobPtr::operator++(int)
+{
+    //check(curr,"out of range.");
+    //auto ret = *this;
+    //++curr;
+    StrBlobPtr ret = *this;
+    ++*this;
+    return ret;
+}
+
+inline StrBlobPtr StrBlobPtr::operator--(int)
+{
+    auto ret = *this;
+    --*this;
+    return ret;
+}
+
+inline StrBlobPtr& StrBlobPtr::operator+=(size_t n)
+{
+    curr += n;
+    check(curr,"out of range.");
+    return *this;
+}
+
+inline StrBlobPtr& StrBlobPtr::operator-=(size_t n)
+{
+    curr -= n;
+    check(curr, "out of range.");
+    return *this;
+}
+
+inline StrBlobPtr StrBlobPtr::operator+(size_t n)
+{
+    StrBlobPtr ret = *this;
+    ret += n;
+    return ret;
+}
+
+inline StrBlobPtr StrBlobPtr::operator-(size_t n)
+{
+    StrBlobPtr ret = *this;
+    ret -= n;
+    return ret;
+}
+
+inline shared_ptr<vector<string>> StrBlobPtr::check(size_t n, const string &msg) const
+{
+    auto ret = wptr.lock();
+    if(!ret) throw std::runtime_error("unbound .");
+    if(n >= ret->size()) throw std::out_of_range(msg);
+    return ret;
+}
+
+inline string& StrBlobPtr::operator[](const size_t n)
+{
+    auto sp = check(n,"out of range.");
+    return (*sp)[n];
+}
+
+inline const string& StrBlobPtr::operator[](const size_t n)const
+{
+    auto sp = check(n,"out of range.");
+    return (*sp)[n];
+}
+
+
+//ConstStrBlobPtr custom const iterator of StrBlob
+class ConstStrBlobPtr{
+    friend bool operator==(const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+    friend bool operator!=(const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+    friend bool operator< (const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+    friend bool operator<=(const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+    friend bool operator> (const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+    friend bool operator>=(const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+    public:
+        ConstStrBlobPtr():curr(0){}
+        ConstStrBlobPtr(const StrBlob &sb, size_t sz=0):wptr(sb.data),curr(sz){}
+
+        const string& deref()const;
+        ConstStrBlobPtr& operator++();
+        ConstStrBlobPtr& operator--();
+        ConstStrBlobPtr operator++(int);
+        ConstStrBlobPtr operator--(int);
+        ConstStrBlobPtr& operator+=(size_t);
+        ConstStrBlobPtr& operator-=(size_t);
+
+        ConstStrBlobPtr operator+(size_t )const;
+        ConstStrBlobPtr operator-(size_t )const;
+
+        const string& operator[](size_t)const;
+    private:
+        shared_ptr<vector<string>> check(size_t,const string&)const;
+        std::weak_ptr<vector<string>> wptr;
+        size_t curr;
+};
+bool operator==(const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+bool operator!=(const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+bool operator< (const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+bool operator<=(const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+bool operator> (const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+bool operator>=(const ConstStrBlobPtr &, const ConstStrBlobPtr &);
+
+inline const string& ConstStrBlobPtr::deref()const
+{
+    auto sp = check(curr,"out of range.");
+    return (*sp)[curr];
+}
+
+inline ConstStrBlobPtr& ConstStrBlobPtr::operator++()
+{
+    check(curr,"out of range.");
+    ++curr;
+    return *this;
+}
+
+inline ConstStrBlobPtr& ConstStrBlobPtr::operator--()
+{//check(-1,"out of range.");
+    check(--curr,"out of range.");
+    return *this;
+}
+
+
