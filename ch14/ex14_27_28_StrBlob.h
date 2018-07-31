@@ -264,6 +264,7 @@ class ConstStrBlobPtr{
         ConstStrBlobPtr operator-(size_t )const;
 
         const string& operator[](size_t)const;
+        string& operator[](size_t);
     private:
         shared_ptr<vector<string>> check(size_t,const string&)const;
         std::weak_ptr<vector<string>> wptr;
@@ -295,4 +296,61 @@ inline ConstStrBlobPtr& ConstStrBlobPtr::operator--()
     return *this;
 }
 
+inline ConstStrBlobPtr ConstStrBlobPtr::operator++(int)
+{
+    ConstStrBlobPtr ret = *this;
+    ++*this;
+    return ret;
+}
+
+inline ConstStrBlobPtr ConstStrBlobPtr::operator--(int)
+{
+    ConstStrBlobPtr ret = *this;
+    --*this;
+    return ret;
+}
+
+inline ConstStrBlobPtr& ConstStrBlobPtr::operator+=(size_t n)
+{
+    curr += n;
+    check(n,"out of range.");
+    return *this;
+}
+
+inline ConstStrBlobPtr& ConstStrBlobPtr::operator-=(size_t n)
+{
+    curr -= n;
+    check(curr,"out of range.");
+    return *this;
+}
+
+inline ConstStrBlobPtr ConstStrBlobPtr::operator+(size_t n)const
+{
+    ConstStrBlobPtr ret = *this;
+    ret += n;
+    return ret;
+}
+
+inline ConstStrBlobPtr ConstStrBlobPtr::operator-(size_t n)const
+{
+    ConstStrBlobPtr ret = *this;
+    ret -= n;
+    return ret;
+}
+
+inline shared_ptr<vector<string>> ConstStrBlobPtr::check(size_t n, const string &msg)const
+{
+    auto ret = wptr.lock();
+    if(!ret)
+        throw std::runtime_error("unbound element.");
+    if(n >= ret->size())
+        throw std::out_of_range(msg);
+    return ret;
+}
+
+inline const string& ConstStrBlobPtr::operator[](size_t n)const
+{
+    auto sp = check(n,"out of range.");
+    return (*sp)[n];
+}
 
