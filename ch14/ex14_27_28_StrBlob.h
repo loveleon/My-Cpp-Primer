@@ -32,16 +32,16 @@ class StrBlob{
         StrBlob():data(make_shared<vector<string>>()){}
         StrBlob(const StrBlob &sb):data(make_shared<vector<string>>(*sb.data)){}
         StrBlob &operator=(const StrBlob &);
-        StrBlob(initializer_list<string> *il):data(make_shared<vector<string>>(il)){}
+        StrBlob(initializer_list<string> il):data(make_shared<vector<string>>(il)){}
 
         StrBlob(StrBlob &&rhs):data(std::move(rhs.data)){}
-        StrBlob &&operator=(StrBlob &&rhs)noexcept;
+        StrBlob& operator=(StrBlob &&rhs)noexcept;
 
         StrBlobPtr begin();
         StrBlobPtr end();
 
-        ConstStrBlobPtr begin()const;
-        ConstStrBlobPtr end()const;
+        ConstStrBlobPtr cbegin()const;
+        ConstStrBlobPtr cend()const;
 
         string& operator[](size_t n);//{return data->at(n);}
         const string& operator[](size_t n)const;
