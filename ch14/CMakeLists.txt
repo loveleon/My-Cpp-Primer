@@ -13,5 +13,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 #add_executable(ex14_27_28 ex14_27_28_StrBlob.cpp ex14_27_28_StrBlobTest.cpp)
 #add_executable(ex14_30 ex14_30_StrBlob.cpp ex14_30_StrBlobTest.cpp)
 #add_executable(ex14_32 ex14_30_StrBlob.cpp ex14_32.cpp)
-add_executable(ex14_35 ex14_35.cpp)
+#add_executable(ex14_35 ex14_35.cpp)
+#add_executable(ex14_36 ex14_36.cpp)
+add_executable(ex14_37 ex14_37.cpp)
 
