@@ -19,4 +19,8 @@
 14.45 定义转换运算符，容易误解。explicit阻止隐式转换。
 14.47 operator const int() 无意义，被编译器忽略
 operator int() const 常量表达式
-
+14.50 ex1初始化产生二义性，ex2合法
+14.51 cal(int)匹配
+匹配原则：1 完全匹配 2.const转换 3.提升类型 4.算数或指针转换 5.类类型转换
+14.52  ld = si + ld 二义性
+ld = ld + si 均可
