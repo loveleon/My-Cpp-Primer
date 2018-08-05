@@ -16,3 +16,7 @@
     }
 };
 14.41当函数对象没有频繁使用或是复杂时，使用lambda;
+14.45 定义转换运算符，容易误解。explicit阻止隐式转换。
+14.47 operator const int() 无意义，被编译器忽略
+operator int() const 常量表达式
+
