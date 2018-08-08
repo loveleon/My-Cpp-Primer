@@ -6,3 +6,6 @@ private：基类、友元
      (c)错，public base不应出现在声明;
 15.8 静态类型，编译器在编译阶段确定的类型；
 动态类型，变量在运行阶段实际存储的类型；
+15.12可以同时声明override final.override 函数覆盖基类实现。final 禁止其他继承类覆盖。
+15.13 继承类实现print，将对自身版本的print递归调用;
+15.14 (a)base (b)base (c)base (d)继承base::name （e）base (f)derived::print
