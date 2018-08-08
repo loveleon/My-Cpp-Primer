@@ -9,3 +9,10 @@ private：基类、友元
 15.12可以同时声明override final.override 函数覆盖基类实现。final 禁止其他继承类覆盖。
 15.13 继承类实现print，将对自身版本的print递归调用;
 15.14 (a)base (b)base (c)base (d)继承base::name （e）base (f)derived::print
+15.18 base *p = &d1 可行
+    p = &d2不可行，
+    p = &d3不 可行，
+    p = &dd1 可行
+    p = &dd2 不可行
+    p = &dd3 不可行
+15.19 不论继承方式如何，Base直接继承类，均可转化为base。如果再以public和protected继承继承类，则转化合法；否则（private继承继承类）不合法;
