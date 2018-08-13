@@ -38,7 +38,7 @@ class Quote{
         virtual void debug()const;
         virtual ~Quote()
         {
-            std::cout << __func__ << " ~Quote ." << std::endl;
+            std::cout << __func__ << " ~Quote destructor." << std::endl;
         }
         std::string isbn()const {return bookNO;}
     private:
