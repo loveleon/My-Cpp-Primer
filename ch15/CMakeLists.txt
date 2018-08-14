@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 
 include_directories(./ex15_3 ./ex15_5 ./ex15_7 ./ex15_9 ./ex15_11 ./ex15_15_16_17 ./ex15_18_19_20 ./ex15_21 ./ex15_26 ./ex15_27 
-    ./ex15_28_29)
+    ./ex15_28_29 ./ex15_30)
 #add_executable(ex15_03 ./ex15_3/main.cpp ./ex15_3/quote.cpp)
 #add_executable(ex15_05 ./ex15_5/main.cpp ./ex15_5/quote.cpp ./ex15_5/bulk_quote.cpp)
 #add_executable(ex15_07 ./ex15_7/main.cpp ./ex15_7/quote.cpp ./ex15_7/bulk_quote.cpp ./ex15_7/limit_quote.cpp)
@@ -18,4 +18,5 @@ include_directories(./ex15_3 ./ex15_5 ./ex15_7 ./ex15_9 ./ex15_11 ./ex15_15_16_1
 #add_executable(ex15_21 ./ex15_21/main.cpp)
 #add_executable(ex15_26 ./ex15_26/main.cpp ./ex15_26/quote.cpp ./ex15_26/bulk_quote.cpp ./ex15_26/limit_quote.cpp ./ex15_26/disc_quote.cpp)
 #add_executable(ex15_27 ./ex15_27/main.cpp ./ex15_27/quote.cpp ./ex15_27/bulk_quote.cpp ./ex15_27/limit_quote.cpp ./ex15_27/disc_quote.cpp)
-add_executable(ex15_28 ./ex15_28_29/main.cpp ./ex15_28_29/quote.cpp ./ex15_28_29/bulk_quote.cpp ./ex15_28_29/limit_quote.cpp ./ex15_28_29/disc_quote.cpp)
+#add_executable(ex15_28 ./ex15_28_29/main.cpp ./ex15_28_29/quote.cpp ./ex15_28_29/bulk_quote.cpp ./ex15_28_29/limit_quote.cpp ./ex15_28_29/disc_quote.cpp)
+add_executable(ex15_30 ./ex15_30/main.cpp ./ex15_30/quote.cpp ./ex15_30/bulk_quote.cpp ./ex15_30/limit_quote.cpp ./ex15_30/disc_quote.cpp ./ex15_30/basket.cpp)

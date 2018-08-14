@@ -14,6 +14,7 @@ void print_debug(Quote &q)
 int main(){
     //std::vector<Quote&> vec;
     std::vector<Quote> vec;
+    //智能指针存放Quote类型，可以调用继承类虚函数即Bulk_quote::net_price
     std::vector<shared_ptr<Quote>> pvec;
 
     Bulk_quote bq1("c",20.50,10,0.8);
