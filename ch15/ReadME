@@ -20,3 +20,6 @@ private：基类、友元
 15.25 如果没有定义disc_quote默认构造函数，定义bulk_quote（）默认函数时候，警告：bulk_quote隐式删除的，因为默认定义不合法。
 因为已经定义含有4个参数的构造函数，所以，编译器不会定义合成默认构造函数。所以，任何默认构造函数继承自这样的类（删除的默认构造函数）的默认构造
 函数也会是删除的。因此，基类的默认构造函数需要显示定义。
+15.31 (a)WordQuery OrQuery NotQuery AndQuery
+        (b)WordQuery NotQuery AndQuery OrQuery
+        (c)WordQuery AndQuery OrQuery
