@@ -1,9 +1,9 @@
 #pragma once
 #include "query_base.h"
-#include "query.h"
+//#include "query.h"
 //所有操作通过Query
 class WordQuery:public Query_base {
-    friend Query;
+    friend class Query;
     WordQuery(const std::string& s):query_word(s){
         std::cout << "WordQuery::WordQuery(" + s + ")\n";
     }
