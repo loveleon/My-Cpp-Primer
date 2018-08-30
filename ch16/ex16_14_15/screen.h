@@ -16,11 +16,11 @@ class Screen {
         {
             return contents[cursor];
         }
-        friend std::ostream& operator<<(std::ostream& out, const Screen& s)
+        friend std::ostream& operator<<(std::ostream& out, const Screen<h,w>& s)
         {
             int i;
             for(i =0;i<s.heigh;++i)
-                out << s.contents.substr(0,w) ;
+                out << s.contents.substr(0,w) << std::endl;
             return out;
         }
 
@@ -34,11 +34,13 @@ class Screen {
         }
 
     private:
-        pos heigh,wide;
+        pos heigh = h,wide = w;
         pos cursor = 0;
         std::string contents;
 
 };
+
+template <unsigned h, unsigned w> std::ostream& operator<<(std::ostream& ,const Screen<h,w>& );
 
 template<unsigned h,unsigned w>
 Screen<h,w>& Screen<h,w>::move(pos r, pos c)
