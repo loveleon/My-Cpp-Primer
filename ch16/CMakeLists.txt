@@ -6,7 +6,7 @@ set(CMAKE_BUILD_TYPE "Debug")
 set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
 set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
 
-include_directories(. ./ex16_1_2_3 ./ex16_4 ./ex16_12_13 ./ex16_14_15 ./ex16_16 ./ex16_19_20)
+include_directories(. ./ex16_1_2_3 ./ex16_4 ./ex16_12_13 ./ex16_14_15 ./ex16_16 ./ex16_19_20 ./ex16_21_22)
 
 #add_executable(ex16_1_2_3 ./ex16_1_2_3/main.cpp)
 #add_executable(ex16_4 ./ex16_4/main.cpp)
@@ -14,3 +14,6 @@ include_directories(. ./ex16_1_2_3 ./ex16_4 ./ex16_12_13 ./ex16_14_15 ./ex16_16 
 #add_executable(ex16_14_15 ./ex16_14_15/main.cpp)
 #add_executable(ex16_16 ./ex16_16/main.cpp)
 add_executable(ex16_19 ./ex16_19_20/main.cpp)
+
+aux_source_directory(./ex16_21_22/ SRC_EX16_21)
+add_executable(ex16_21 ${SRC_EX16_21})
