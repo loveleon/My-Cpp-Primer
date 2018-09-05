@@ -18,6 +18,8 @@ void swap(SharedPointer<T>& lft,SharedPointer<T>& rhs)
 template<typename T>
 class SharedPointer{
     public:
+        friend void swap<T>(SharedPointer<T>& lft,SharedPointer<T>& rhs);
+    public:
         //default.
         SharedPointer():ptr(nullptr),ref_count(new std::size_t(1)),deleter(cp5::Delete()){}
         //Ctor that takes raw pointer.
@@ -78,7 +80,8 @@ class SharedPointer{
         void swap(SharedPointer& rhs)
         {
             std::cout << __func__ << __LINE__ <<std::endl;
-            ::swap(*this,rhs);
+            cp5::swap(*this,rhs);
+            //::swap(*this,rhs);
         }
         //free object if unique.
         void reset()
