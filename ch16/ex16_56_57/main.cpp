@@ -66,3 +66,7 @@ int main(){
     err_msg(std::cout,1,2,3,4,9.0f,"sss","alan");
     return 0;
 }
+//
+//ex16.57
+//err_msg takes initializer_list as argument.So only the elements are same type or convertible.
+//In contrast,the variadic parameter provides better flexibility.
