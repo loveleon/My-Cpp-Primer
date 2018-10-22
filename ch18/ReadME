@@ -1,0 +1,20 @@
+18.1  (1) range_error (2) exception
+  terminate called after throw std::exception *.
+
+18.2 vector is local element,will be automaticly destroyed.
+    dynamically allocated memory will not be destroyed.
+    the file object will be destroyed.
+18.3
+    void exercise(int *b, int *e)
+    {
+        vector<int> v(b,e);
+        int *p = new int[v.size()];
+        ifstream in("ints");
+    }
+
+18.4
+after catch(exception) ,the reset of exception will not be called.
+18.6
+throw pexception
+throw
+throw intNum
